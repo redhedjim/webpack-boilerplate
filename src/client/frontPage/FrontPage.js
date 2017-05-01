@@ -19,7 +19,7 @@ class FrontPage extends React.Component {
     const orgId = 438518;
     const networks = axios.get(`https://n155.meraki.com/api/v0/organizations/${orgId}/networks`, {     
       headers: {
-        'X-Cisco-Meraki-API-Key': '	ab79946f614e1f04306533ae0dbf8f4fc59b2506',
+        'X-Cisco-Meraki-API-Key': 'null',
       },
     }).then((response) => {
       this.setState({ networkList: response.data });
@@ -29,7 +29,7 @@ class FrontPage extends React.Component {
   getDevices() {
     axios.get(`https://n155.meraki.com/api/v0/networks/${this.state.networkList[this.state.counter].id}/devices`, {     
       headers: {
-        'X-Cisco-Meraki-API-Key': '	ab79946f614e1f04306533ae0dbf8f4fc59b2506',      
+        'X-Cisco-Meraki-API-Key': 'null',      
       },
     }).then((response) => {       
       const mxDevice = response.data.filter((device) => {       

@@ -1,1 +1,1 @@
-# Public IP finder - Meraki Dashboard API 
+# webpack-boilerplate
