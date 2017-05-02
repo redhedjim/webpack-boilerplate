@@ -3,14 +3,14 @@ const path = require('path');
 
 const app = express();
 
-// Server routes...
+// // Server routes...
 app.get('/hello', (req, res) => res.send({ hi: 'there' }));
-console.log('Server hit');
+// console.log('Server hit');
 
 if (process.env.NODE_ENV !== 'production') {
   const webpackMiddleware = require('webpack-dev-middleware');
   const webpack = require('webpack');
-  const webpackConfig = require('../webpack.config.js');
+  const webpackConfig = require('./webpack.config.js');
 
   app.use(webpackMiddleware(webpack(webpackConfig)));
 } else {
@@ -20,4 +20,4 @@ if (process.env.NODE_ENV !== 'production') {
   });
 }
 
-app.listen(process.env.PORT || 3050, () => console.log('Listening'));
+app.listen(process.env.PORT || 8080, () => console.log('Listening'));
