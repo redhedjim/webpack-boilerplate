@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'babel-polyfill';
+import { Provider } from 'react-redux';
 import FrontPage from './frontPage/FrontPage';
+import store from './store';
 
 const App = () => {
   return (
@@ -11,4 +13,8 @@ const App = () => {
   );
 };
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+<Provider store={store}>
+  <App />
+</Provider>, 
+document.getElementById('root'));
