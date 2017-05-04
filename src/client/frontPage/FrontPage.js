@@ -1,17 +1,25 @@
-import React from 'react';
-import axios from 'axios';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getPosts } from './FrontPageActions';
 
-const FrontPage = () => { 
-  async function getPost() {
-    const response = await axios.get('https://jsonplaceholder.typicode.com/posts/1');
-    console.log(response);
+class FrontPage extends Component { 
+  componentWillMount() {
+    this.props.getPosts();
   }
-  getPost();
-  return (
-        <div>
-          Front Page
-        </div>
-  );
-};
+  render() {
+    const postTitles = this.props.posts.map(post => <li key={post.id}>{post.title}</li>);
+    return (
+      <div>
+        <h1>Posts</h1>
+        <ul>{ postTitles }</ul>
+      </div>
+    );
+  }
+}
 
-export default FrontPage;
+const mapStateToProps = (state) => {
+  return {
+    posts: state.posts
+  };
+};
+export default connect(mapStateToProps, { getPosts })(FrontPage);
